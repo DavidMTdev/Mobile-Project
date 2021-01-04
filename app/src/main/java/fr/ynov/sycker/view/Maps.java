@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -94,7 +95,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                 ApiMerchant api = new Gson().fromJson(json, ApiMerchant.class);
 
                 if (records != null && records.size() > 0) {
-                    for (int i = 0; i < records.size(); i++){
+                    for (int i = 0; i < records.size(); i++) {
                         Fields fields = records.get(i).getFields();
                         Marker marker = mMap.addMarker(
                                 new MarkerOptions().position(
@@ -102,11 +103,27 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                                                 fields.getGeo_point_2d()[0],
                                                 fields.getGeo_point_2d()[1]
                                         )
-                                )
-                        )
+                                ).title(fields.getNom_du_commerce()).snippet(fields.getCode_postal() + "/" + fields.getAdresse())
+                        );
+                        markers.put(marker.getId(), fields);
+
+                        if (i == 0) {
+                            mMap.moveCamera(CameraUpdateFactory.newLatLng(
+                                    new LatLng(
+                                            fields.getGeo_point_2d()[0],
+                                            fields.getGeo_point_2d()[1]
+                                    )
+                            ));
+                        }
                     }
                 }
 
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                String json = new String(error.networkResponse.data);
+                Log.e("volley",json);
             }
         });
     }
