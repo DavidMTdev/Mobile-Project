@@ -1,7 +1,9 @@
 package fr.ynov.sycker.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import fr.ynov.sycker.AppActivity;
 
@@ -21,5 +23,15 @@ public class DataDetails extends AppActivity {
 
             Log.e("merchant", merchant.getNom_du_commerce());
         }
+    }
+
+    public void showGoogleMap(View view) {
+        // Intent
+        Intent intent = new Intent(DataDetails.this, Maps.class);
+
+        // passage de l'objet
+        intent.putExtra("merchant", merchant);
+
+        startActivity(intent);
     }
 }
