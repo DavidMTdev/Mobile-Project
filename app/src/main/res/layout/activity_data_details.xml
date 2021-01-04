@@ -72,7 +72,13 @@
         android:layout_marginTop="15dp"
         />
 
-
+    <Button
+        android:onClick="showGoogleMap"
+        android:id="@+id/buttonEmail"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="google map"/>
 
 
 

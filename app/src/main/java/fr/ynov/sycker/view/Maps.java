@@ -35,7 +35,7 @@ import fr.ynov.sycker.utils.FastDialog;
 import fr.ynov.sycker.utils.Network;
 
 public class Maps extends FragmentActivity implements OnMapReadyCallback {
-
+    private Fields merchant;
     private GoogleMap mMap;
     private List<Records> records;
     private Map<String, Fields> markers = new HashMap<String, Fields>();
@@ -48,6 +48,12 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        if(getIntent().getExtras() != null) {
+            merchant = (Fields) getIntent().getExtras().get("merchant");
+
+            Log.e("merchant", merchant.getNom_du_commerce());
+        }
     }
 
     /**
