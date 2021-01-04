@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Sycker</string>
 
+    <string name="Data_List_Title">Les Commerçants</string>
+
     <!-- FastDialog -->
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
