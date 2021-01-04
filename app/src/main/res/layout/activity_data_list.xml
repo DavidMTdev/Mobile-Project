@@ -16,6 +16,14 @@
         android:layout_height="wrap_content"
         android:text="@string/Data_List_Title"/>
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/type_prompt"
+        android:spinnerMode="dropdown"/>
+
     <ListView
         android:id="@+id/listViewData"
         android:layout_width="match_parent"

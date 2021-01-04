@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,12 +31,15 @@ import fr.ynov.sycker.models.merchant.Records;
 import fr.ynov.sycker.utils.Constant;
 import fr.ynov.sycker.utils.FastDialog;
 import fr.ynov.sycker.utils.Network;
+import fr.ynov.sycker.view.item.MerchantAdapter;
 
-public class DataList extends AppActivity {
+public class DataList extends AppActivity{
 
     private ListView listViewData;
+    private Spinner spinner;
 
     private List<Records> records;
+    private final String[]items = {"Artisanat d'art", "Restaurant ou traiteur", "Boucherie - charcuterie - rôtisserie"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class DataList extends AppActivity {
         setContentView(R.layout.activity_data_list);
 
         listViewData = findViewById(R.id.listViewData);
+        spinner = findViewById(R.id.spinner);
 
         if (!Network.isNetworkAvailable(DataList.this)) {
             FastDialog.showDialog(
@@ -56,6 +61,14 @@ public class DataList extends AppActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = Constant.URL;
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataList.this, android.R.layout.simple_spinner_item, items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        showDataList(queue, url);
+    }
+
+    public void showDataList(RequestQueue queue, String url){
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -65,7 +78,7 @@ public class DataList extends AppActivity {
                         ApiMerchant api = new Gson().fromJson(json, ApiMerchant.class);
 
                         records = api.getRecords();
-                        List<String> stringList = new ArrayList<>();
+                        List<Fields> stringList = new ArrayList<>();
 
                         if (records != null && records.size() > 0) {
 
@@ -73,18 +86,15 @@ public class DataList extends AppActivity {
                             for (int i = 0; i < records.size(); i++) {
                                 Fields fields = records.get(i).getFields();
 
-                                stringList.add(fields.getNom_du_commerce());
+                                stringList.add(fields);
                             }
                         }
 
-                        // Adapter = recyclage des items d'une ListView
-                        ArrayAdapter adapter = new ArrayAdapter<>(
+                        listViewData.setAdapter(new MerchantAdapter(
                                 DataList.this,
-                                android.R.layout.simple_list_item_1, // template
-                                stringList
+                                R.layout.item_merchant,
+                                stringList)
                         );
-
-                        listViewData.setAdapter(adapter);
 
                         listViewData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
@@ -114,6 +124,5 @@ public class DataList extends AppActivity {
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
-
     }
 }
