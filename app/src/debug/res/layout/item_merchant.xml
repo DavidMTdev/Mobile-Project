@@ -3,20 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/list_button">
 
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="MC DO"
-        android:padding="5dp"/>
+        tools:text="Nom du commerçant"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:paddingVertical="5dp"/>
 
     <TextView
         android:id="@+id/textViewType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Fast Food"
-        android:padding="5dp"/>
+        tools:text="type de commerce"
+        android:textSize="15dp"
+        />
 
 </LinearLayout>
