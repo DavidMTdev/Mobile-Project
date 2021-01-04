@@ -7,11 +7,20 @@ public class Fields implements Serializable {
     private String description;
     private String adresse;
     private String telephone;
+    private String nom_du_commerce;
     private double[] geo_point_2d;
     private String services;
     private String mail;
     private String type_de_commerce;
     private String site_internet;
+
+    public String getNom_du_commerce() {
+        return nom_du_commerce;
+    }
+
+    public void setNom_du_commerce(String nom_du_commerce) {
+        this.nom_du_commerce = nom_du_commerce;
+    }
 
     public String getCode_postal() {
         return code_postal;
