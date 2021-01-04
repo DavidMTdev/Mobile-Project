@@ -79,8 +79,8 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
     }
 
     private void getData(GoogleMap mMap) {
-        if(!Network.isNetworkAvailable(Maps.this)){
-            FastDialog.showDialog(Maps.this,FastDialog.SIMPLE_DIALOG,getString(R.string.dialog_network_error));
+        if (!Network.isNetworkAvailable(Maps.this)) {
+            FastDialog.showDialog(Maps.this, FastDialog.SIMPLE_DIALOG, getString(R.string.dialog_network_error));
             return;
         }
 
@@ -123,8 +123,9 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String json = new String(error.networkResponse.data);
-                Log.e("volley",json);
+                Log.e("volley", json);
             }
         });
+        queue.add(stringRequest);
     }
 }
