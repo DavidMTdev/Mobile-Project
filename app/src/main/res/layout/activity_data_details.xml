@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,6 +18,7 @@
         android:gravity="center_horizontal"
         android:text="name"
         android:textSize="40sp"
+        android:textColor="@color/black"
     />
 
     <TextView
@@ -22,14 +26,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="type de commerce"
+        android:gravity="center_horizontal"
         android:textSize="20sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Addresse : "
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="15dp"
+        android:textStyle="bold"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp">
+        android:textColor="@color/black"
+        android:paddingLeft="15dp"
+        >
 
     <TextView
         android:id="@+id/adresse"
@@ -39,39 +59,41 @@
         android:textSize="20sp"
         android:layout_gravity="left"
         android:layout_weight="1"
+        android:textColor="@color/black"
         />
 
     <TextView
         android:id="@+id/postal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="postal"
+        android:text="75000"
         android:textSize="20sp"
-
         android:layout_gravity="right"
         android:layout_weight="2"
+        android:textColor="@color/black"
         />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Paris"
+            android:textSize="20sp"
+            android:layout_gravity="right"
+            android:layout_weight="2"
+            android:textColor="@color/black"
+            />
     </LinearLayout>
 
-    <Button
-        android:onClick="call"
-        android:id="@+id/telephone"
-        android:layout_marginTop="8dp"
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="telephone"
+        android:text="Description :"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"
         android:textColor="@color/black"
-        android:background="@android:color/transparent"/>
-
-    <Button
-        android:onClick="sendMail"
-        android:id="@+id/mail"
-        android:layout_marginTop="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="mail"
-        android:textColor="@color/black"
-        android:background="@android:color/transparent"/>
+        android:paddingLeft="15dp"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/description"
@@ -79,8 +101,61 @@
         android:layout_height="wrap_content"
         android:text="description"
         android:textSize="20sp"
-        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:paddingLeft="15dp"
         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Site web :"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:paddingLeft="15dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:id="@+id/site"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:onClick="showSite"
+        android:text="site"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact :"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:paddingLeft="15dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:onClick="call"
+        android:id="@+id/telephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="telephone"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        />
+
+    <Button
+        android:onClick="sendMail"
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mail"
+        android:textColor="@color/black"
+        android:background="@android:color/transparent"/>
+
+
 
     <TextView
         android:id="@+id/services"
@@ -89,17 +164,11 @@
         android:text="services"
         android:textSize="20sp"
         android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:paddingLeft="15dp"
         />
 
-    <Button
-        android:onClick="showSite"
-        android:id="@+id/site"
-        android:layout_marginTop="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="site"
-        android:textColor="@color/black"
-        android:background="@android:color/transparent"/>
+
 
     <Button
         android:onClick="showGoogleMap"
@@ -108,8 +177,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="google map"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        />
 
 
 
 </LinearLayout>
+</ScrollView>
