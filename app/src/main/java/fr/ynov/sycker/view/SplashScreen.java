@@ -1,10 +1,12 @@
-package fr.ynov.sycker;
+package fr.ynov.sycker.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import fr.ynov.sycker.R;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -18,7 +20,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DataList.class);
                 startActivity(intent);
                 finish();
             }
