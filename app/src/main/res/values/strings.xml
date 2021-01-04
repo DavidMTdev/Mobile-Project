@@ -3,6 +3,8 @@
 
     <string name="Data_List_Title">Les Commerçants</string>
 
+    <string name="type_prompt">Choisir votre type</string>
+
     <!-- FastDialog -->
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
