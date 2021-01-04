@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import fr.ynov.sycker.AppActivity;
 
+import fr.ynov.sycker.MapsActivity;
 import fr.ynov.sycker.R;
 import fr.ynov.sycker.models.merchant.Fields;
 
@@ -66,7 +67,7 @@ public class DataDetails extends AppActivity {
 
     public void showGoogleMap(View view) {
         // Intent
-        Intent intent = new Intent(DataDetails.this, Maps.class);
+        Intent intent = new Intent(DataDetails.this, MapsActivity.class);
 
         // passage de l'objet
         intent.putExtra("merchant", merchant);
