@@ -105,7 +105,6 @@ public class DataList extends AppActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 String json = new String(error.networkResponse.data);
 
                 Log.e("volley", json);
