@@ -24,6 +24,7 @@
         </activity>
 
         <activity android:name=".view.DataList" />
+        <activity android:name=".view.DataDetails" />
 
     </application>
 
