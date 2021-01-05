@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.ynov.sycker.models.merchant.Fields;
 
@@ -30,7 +31,11 @@ public class Favorite {
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<Fields>>() {}.getType();
         ArrayList<Fields> obj = gson.fromJson(Preference.getMerchant(context), type);
-        System.out.println(obj);
+
+        if (obj == null) {
+            return new ArrayList<Fields>();
+        }
+
         return obj;
     }
 }

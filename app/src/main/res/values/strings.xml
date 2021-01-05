@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">Sycker</string>
-
     <string name="Data_List_Title">Les Commerçants</string>
 
-    <string name="DataList_spinner_prompt">Choisir votre type</string>
-
+    <string name="my_favorite">Mes favoris</string>
     <string-array name="DataList_spinner_array">
         <item>Choisir votre type</item>
         <item>Artisanat d\'art</item>
@@ -28,4 +26,5 @@
     <string name="cancel">Annuler</string>
     <string name="dialog_network_error">Vous devez être connecté</string>
     <string name="title_activity_maps">Map</string>
+
 </resources>

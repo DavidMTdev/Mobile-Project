@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -31,6 +32,7 @@ import fr.ynov.sycker.models.merchant.Fields;
 import fr.ynov.sycker.models.merchant.Records;
 import fr.ynov.sycker.utils.Constant;
 import fr.ynov.sycker.utils.FastDialog;
+import fr.ynov.sycker.utils.Favorite;
 import fr.ynov.sycker.utils.Network;
 import fr.ynov.sycker.view.item.MerchantAdapter;
 
@@ -38,6 +40,7 @@ public class DataList extends AppActivity{
 
     private ListView listViewData;
     private Spinner spinner;
+    private Button buttonFavorite;
 
     private List<Records> records;
     private String request;
@@ -53,6 +56,7 @@ public class DataList extends AppActivity{
 
         listViewData = findViewById(R.id.listViewData);
         spinner = findViewById(R.id.spinner);
+        buttonFavorite = findViewById(R.id.buttonFavori);
 
         if (!Network.isNetworkAvailable(DataList.this)) {
             FastDialog.showDialog(
@@ -109,29 +113,9 @@ public class DataList extends AppActivity{
 
                                 stringList.add(fields);
                             }
+
+                            showList(stringList);
                         }
-
-                        listViewData.setAdapter(new MerchantAdapter(
-                                DataList.this,
-                                R.layout.item_merchant,
-                                stringList)
-                        );
-
-                        listViewData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Fields merchant = records.get(position).getFields();
-
-                                // Intent
-                                Intent intent = new Intent(DataList.this, DataDetails.class);
-
-                                // passage de l'objet
-                                intent.putExtra("merchant", merchant);
-
-                                startActivity(intent);
-                            }
-                        });
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -144,5 +128,32 @@ public class DataList extends AppActivity{
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
+
+    public void showList(List<Fields> list){
+        listViewData.setAdapter(new MerchantAdapter(
+                DataList.this,
+                R.layout.item_merchant,
+                list)
+        );
+
+        listViewData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Fields merchant = list.get(position);
+
+                // Intent
+                Intent intent = new Intent(DataList.this, DataDetails.class);
+                // passage de l'objet
+                intent.putExtra("merchant", merchant);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void showFavorite(View view){
+        Favorite favorite = new Favorite();
+        showList(favorite.loadData(DataList.this));
     }
 }
