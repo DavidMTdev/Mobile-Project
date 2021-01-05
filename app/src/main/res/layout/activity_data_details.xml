@@ -69,19 +69,11 @@
         android:text="75000"
         android:textSize="20sp"
         android:layout_gravity="right"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:textColor="@color/black"
         />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Paris"
-            android:textSize="20sp"
-            android:layout_gravity="right"
-            android:layout_weight="2"
-            android:textColor="@color/black"
-            />
+
     </LinearLayout>
 
     <TextView
@@ -177,6 +169,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="google map"
+        android:textColor="@color/white"
+        />
+
+    <Button
+        android:onClick="addFavori"
+        android:id="@+id/buttonFavori"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="favori"
         android:textColor="@color/white"
         />
 

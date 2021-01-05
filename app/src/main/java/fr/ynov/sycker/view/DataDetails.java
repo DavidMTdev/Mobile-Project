@@ -1,7 +1,9 @@
 package fr.ynov.sycker.view;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -12,12 +14,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import fr.ynov.sycker.AppActivity;
 
 import fr.ynov.sycker.MapsActivity;
 import fr.ynov.sycker.R;
 import fr.ynov.sycker.models.merchant.Fields;
+import fr.ynov.sycker.utils.Favorite;
+import fr.ynov.sycker.utils.Preference;
 
 public class DataDetails extends AppActivity {
     private static final int REQUEST_CODE_CALL_PHONE = 1;
@@ -31,6 +41,8 @@ public class DataDetails extends AppActivity {
     private TextView description;
     private TextView services;
     private Button site;
+    private Button favori;
+
 
 
     @Override
@@ -47,6 +59,7 @@ public class DataDetails extends AppActivity {
         this.description = findViewById(R.id.description);
         this.services = findViewById(R.id.services);
         this.site = findViewById(R.id.site);
+        this.favori = findViewById(R.id.buttonFavori);
 
         if(getIntent().getExtras() != null) {
             merchant = (Fields) getIntent().getExtras().get("merchant");
@@ -121,4 +134,11 @@ public class DataDetails extends AppActivity {
         intent.setData(Uri.parse(this.site.getText().toString()));
         startActivity(intent);
     }
+
+    public void addFavori(View view) {
+        Favorite favorite = new Favorite();
+        favorite.saveData(DataDetails.this, merchant);
+        Toast.makeText(this, "Commerçant ajouté aux favoris", Toast.LENGTH_LONG).show();
+    }
+
 }
