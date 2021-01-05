@@ -42,7 +42,7 @@ public class DataDetails extends AppActivity {
     private TextView services;
     private Button site;
     private Button buttonFavorite;
-
+    private Button deleteFavori;
 
 
     @Override
@@ -60,6 +60,7 @@ public class DataDetails extends AppActivity {
         this.services = findViewById(R.id.services);
         this.site = findViewById(R.id.site);
         this.buttonFavorite = findViewById(R.id.buttonFavori);
+        this.deleteFavori = findViewById(R.id.buttonDelete);
 
         if(getIntent().getExtras() != null) {
             merchant = (Fields) getIntent().getExtras().get("merchant");
@@ -149,8 +150,27 @@ public class DataDetails extends AppActivity {
         for( Fields value : preference ) {
             if (value.getNom_du_commerce().equals(this.merchant.getNom_du_commerce())){
                 this.buttonFavorite.setVisibility(View.GONE);
+                this.deleteFavori.setVisibility(View.VISIBLE);
             }
         }
     }
 
+    public void deleteFavori(View view) {
+        Favorite favorite = new Favorite();
+        ArrayList<Fields> preference = favorite.loadData(DataDetails.this);
+        ArrayList<Fields> listMerchant = new ArrayList<Fields>();
+        int index = 0;
+        for( Fields value : preference ) {
+            if (!value.getNom_du_commerce().equals(this.merchant.getNom_du_commerce())){
+                listMerchant.add(value);
+            }
+        }
+        Gson gson = new Gson();
+        String json = gson.toJson(listMerchant);
+
+        Preference.setMerchant(DataDetails.this, json);
+        Toast.makeText(this, "Suppresion du favori", Toast.LENGTH_LONG).show();
+        finish();
+        startActivity(getIntent());
+    }
 }

@@ -182,6 +182,17 @@
         android:textColor="@color/white"
         />
 
+    <Button
+        android:onClick="deleteFavori"
+        android:id="@+id/buttonDelete"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Supprimer favori"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        />
+
 
 
 </LinearLayout>
