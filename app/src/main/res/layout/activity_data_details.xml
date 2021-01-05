@@ -35,7 +35,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Addresse : "
+        android:text="@string/adress"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:layout_marginTop="40dp"
@@ -79,7 +79,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Description :"
+        android:text="@string/description"
         android:textSize="20sp"
         android:layout_marginTop="15dp"
         android:textColor="@color/black"
@@ -100,7 +100,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Site web :"
+        android:text="@string/website"
         android:textSize="20sp"
         android:layout_marginTop="15dp"
         android:textColor="@color/black"
@@ -120,7 +120,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contact :"
+        android:text="@string/contact"
         android:textSize="20sp"
         android:layout_marginTop="15dp"
         android:textColor="@color/black"
@@ -178,7 +178,7 @@
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="favori"
+        android:text="@string/add_favoris"
         android:textColor="@color/white"
         />
 

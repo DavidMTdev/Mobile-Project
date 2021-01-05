@@ -28,4 +28,10 @@
     <string name="cancel">Annuler</string>
     <string name="dialog_network_error">Vous devez être connecté</string>
     <string name="title_activity_maps">Map</string>
+    <string name="add_favoris">ajouter_aux_favoris</string>
+    <string name="adress">Addresse :</string>
+    <string name="description">Description :</string>
+    <string name="website">Site web :</string>
+    <string name="contact">Contact :</string>
+
 </resources>
