@@ -41,7 +41,7 @@ public class DataDetails extends AppActivity {
     private TextView description;
     private TextView services;
     private Button site;
-    private Button favori;
+    private Button buttonFavorite;
 
 
 
@@ -59,7 +59,7 @@ public class DataDetails extends AppActivity {
         this.description = findViewById(R.id.description);
         this.services = findViewById(R.id.services);
         this.site = findViewById(R.id.site);
-        this.favori = findViewById(R.id.buttonFavori);
+        this.buttonFavorite = findViewById(R.id.buttonFavori);
 
         if(getIntent().getExtras() != null) {
             merchant = (Fields) getIntent().getExtras().get("merchant");
@@ -74,7 +74,7 @@ public class DataDetails extends AppActivity {
             this.services.setText(merchant.getServices());
             this.site.setText(merchant.getSite_internet());
 
-            Log.e("merchant", merchant.getNom_du_commerce());
+            this.disableButtonFavorite();
         }
     }
 
@@ -139,6 +139,18 @@ public class DataDetails extends AppActivity {
         Favorite favorite = new Favorite();
         favorite.saveData(DataDetails.this, merchant);
         Toast.makeText(this, "Commerçant ajouté aux favoris", Toast.LENGTH_LONG).show();
+        finish();
+        startActivity(getIntent());
+    }
+
+    public void disableButtonFavorite(){
+        Favorite favorite = new Favorite();
+        ArrayList<Fields> preference = favorite.loadData(DataDetails.this);
+        for( Fields value : preference ) {
+            if (value.getNom_du_commerce().equals(this.merchant.getNom_du_commerce())){
+                this.buttonFavorite.setVisibility(View.GONE);
+            }
+        }
     }
 
 }
