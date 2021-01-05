@@ -157,18 +157,7 @@ public class DataDetails extends AppActivity {
 
     public void deleteFavori(View view) {
         Favorite favorite = new Favorite();
-        ArrayList<Fields> preference = favorite.loadData(DataDetails.this);
-        ArrayList<Fields> listMerchant = new ArrayList<Fields>();
-        int index = 0;
-        for( Fields value : preference ) {
-            if (!value.getNom_du_commerce().equals(this.merchant.getNom_du_commerce())){
-                listMerchant.add(value);
-            }
-        }
-        Gson gson = new Gson();
-        String json = gson.toJson(listMerchant);
-
-        Preference.setMerchant(DataDetails.this, json);
+        favorite.deleteData(DataDetails.this, merchant);
         Toast.makeText(this, "Suppresion du favori", Toast.LENGTH_LONG).show();
         finish();
         startActivity(getIntent());

@@ -38,4 +38,19 @@ public class Favorite {
 
         return obj;
     }
+
+    public void deleteData(Context context, Fields merchant) {
+        ArrayList<Fields> listMerchant = loadData(context);
+        ArrayList<Fields> preference = new ArrayList<Fields>();
+        for( Fields value : listMerchant ) {
+            if (!value.getNom_du_commerce().equals(merchant.getNom_du_commerce())){
+                preference.add(value);
+            }
+        }
+
+        Gson gson = new Gson();
+        String json = gson.toJson(preference);
+
+        Preference.setMerchant(context, json);
+    }
 }
