@@ -3,7 +3,25 @@
 
     <string name="Data_List_Title">Les Commerçants</string>
 
-    <string name="type_prompt">Choisir votre type</string>
+    <string name="DataList_spinner_prompt">Choisir votre type</string>
+
+    <string-array name="DataList_spinner_array">
+        <item>Choisir votre type</item>
+        <item>Artisanat d\'art</item>
+        <item>Restaurant ou traiteur</item>
+        <item>Boucherie - charcuterie - rôtisserie</item>
+        <item>Primeur</item>
+        <item>Alimentation générale et produits de première nécessité</item>
+        <item>Librairie</item>
+        <item>Caviste - Brasserie</item>
+        <item>Boulangerie - pâtisserie</item>
+        <item>Épicerie fine</item>
+        <item>Fromagerie</item>
+        <item>Fleuriste</item>
+        <item>Poissonnerie</item>
+        <item>Chocolaterie - Pâtisserie</item>
+        <item>Jouets - Jeux</item>
+    </string-array>
 
     <!-- FastDialog -->
     <string name="ok">OK</string>

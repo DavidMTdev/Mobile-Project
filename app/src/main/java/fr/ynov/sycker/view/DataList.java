@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -39,7 +40,11 @@ public class DataList extends AppActivity{
     private Spinner spinner;
 
     private List<Records> records;
-    private final String[]items = {"Artisanat d'art", "Restaurant ou traiteur", "Boucherie - charcuterie - rôtisserie"};
+    private String request;
+
+    private String url = Constant.URL;
+    private String query = Constant.QUERY;
+    private String rows = Constant.ROWS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +64,29 @@ public class DataList extends AppActivity{
         }
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = Constant.URL;
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataList.this, android.R.layout.simple_spinner_item, items);
+        request = url + query;
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.DataList_spinner_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        showDataList(queue, url);
+        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String category = parent.getItemAtPosition(position).toString();
+
+                if (parent.getItemIdAtPosition(position) == 0) {
+                    request = url + query;
+                } else {
+                    request = url + query + category;
+                }
+
+                showDataList(queue, request);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
     }
 
     public void showDataList(RequestQueue queue, String url){
